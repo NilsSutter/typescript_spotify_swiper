@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { respondWith } from "../lib/helper/respondWith";
 import { ExpressRouteFunc } from "../lib/types/expressRouteFunc";
-import { UseCase } from "../usecases/useCase";
+import { Base as UseCase } from "../usecases/base";
 
 // To be able to use a Dependency Injection approach, all route functions must return a type of ExpressRouteFunc.
 // General express route callbacks only expect 3 arguments, req, res and next, 

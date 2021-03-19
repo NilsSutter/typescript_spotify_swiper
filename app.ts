@@ -1,6 +1,6 @@
 import express from "express"
 import { sampleRoute } from "./api/routes/sampleRoute"
-import { Failure, Success, UseCase } from "./api/usecases/useCase"
+import { Failure, Success, Base } from "./api/usecases/base"
 
 const app: express.Application = express()
 
@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Dependencies
-class SampleUseCase extends UseCase {
+class SampleUseCase extends Base {
   perform(): Success | Failure {
     return this.failure("Sample error")
   }

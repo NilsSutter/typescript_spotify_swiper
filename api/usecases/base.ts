@@ -14,7 +14,7 @@ export class Failure {
 	}
 }
 
-export abstract class UseCase {
+export abstract class Base {
 	abstract perform(...args: any[]): Success | Failure
 
 	success(value: any): Success  {

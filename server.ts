@@ -1,5 +1,5 @@
 import app from "./app"
-import { DatabaseConnection } from "./db/connectDb";
+import { DatabaseConnection } from "./db/databaseConnection";
 
 // Application entry
 const port: string = process.env.PORT || '8080';

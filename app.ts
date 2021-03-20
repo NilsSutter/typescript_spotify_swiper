@@ -12,7 +12,7 @@ const app: express.Application = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(session)
+// app.use(session) => deprecated
 
 // Dependencies
 const sampleUseCase = new SampleUseCase

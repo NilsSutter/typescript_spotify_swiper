@@ -1,22 +1,17 @@
 import app from "./app"
-import mongoose from "mongoose"
+import { DatabaseConnector } from "./db/connectDb";
 
 // Application entry
 const port: string = process.env.PORT || '8080';
 app.set('port', port);
 
-// connect to database
-mongoose.connect('mongodb://127.0.0.1:27017/spotify_swipes', {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+const db = DatabaseConnector.getInstance().execute()
 
-const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log("Successfully connected to the database")
 
+  // start server
   if (app.listen(port)) {
     console.log(`App running on port ${port}`)
   }

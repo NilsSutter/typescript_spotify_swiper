@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/cookie-parser": "^1.4.2",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11",
     "@types/express-session": "^1.17.3",
     "@types/mongoose": "^5.10.3",
@@ -19,6 +20,7 @@
     "@types/passport": "^1.0.6",
     "@types/passport-spotify": "^1.1.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.12.1",

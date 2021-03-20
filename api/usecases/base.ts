@@ -1,27 +1,27 @@
 export class Success {
-	value: any
+  value: any
 
-	constructor(value: any) {
-		this.value = value
-	}
+  constructor(value: any) {
+    this.value = value
+  }
 }
 
 export class Failure {
-	failureReason: any
+  failureReason: any
 
-	constructor(failureReason: any) {
-		this.failureReason = failureReason
-	}
+  constructor(failureReason: any) {
+    this.failureReason = failureReason
+  }
 }
 
 export abstract class Base {
-	abstract perform(...args: any[]): Success | Failure
+  abstract perform(...args: any[]): Success | Failure
 
-	success(value: any): Success  {
-		return new Success(value)
-	}
+  success(value: any): Success  {
+    return new Success(value)
+  }
 
-	failure(reason: string): Failure {
-		return new Failure(reason)
-	}
+  failure(reason: string): Failure {
+    return new Failure(reason)
+  }
 }

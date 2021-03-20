@@ -1,11 +1,11 @@
 import app from "./app"
-import { DatabaseConnector } from "./db/connectDb";
+import { DatabaseConnection } from "./db/connectDb";
 
 // Application entry
 const port: string = process.env.PORT || '8080';
 app.set('port', port);
 
-const db = DatabaseConnector.getInstance().execute()
+const db = DatabaseConnection.getInstance().establish()
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {

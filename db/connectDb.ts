@@ -2,23 +2,23 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config()
 
-export class DatabaseConnector {
-  private static instance: DatabaseConnector
+export class DatabaseConnection {
+  private static instance: DatabaseConnection
 
   // prevent constuction calls with new operator
   private constructor() {}
 
   // Get access to the singleton instance
-  public static getInstance(): DatabaseConnector {
-    if (!DatabaseConnector.instance) {
-        DatabaseConnector.instance = new DatabaseConnector();
+  public static getInstance(): DatabaseConnection {
+    if (!DatabaseConnection.instance) {
+        DatabaseConnection.instance = new DatabaseConnection();
     }
 
-    return DatabaseConnector.instance;
+    return DatabaseConnection.instance;
   }
 
   // connect to database
-  public execute(): mongoose.Connection {
+  public establish(): mongoose.Connection {
     mongoose.connect(this.connectionUrl(), {
       useCreateIndex: true,
       useNewUrlParser: true,

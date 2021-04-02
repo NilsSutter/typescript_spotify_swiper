@@ -1,10 +1,10 @@
 import express from "express"
 import cookieParser from "cookie-parser"
-import session from "express-session"
-import passport from "passport"
-import SpotifyStrategy from "passport-spotify"
-import { sampleRoute } from "./api/routes/sampleRoute"
-import { SampleUseCase } from "./api/usecases/sampleUseCase"
+// import session from "express-session"
+// import passport from "passport"
+// import SpotifyStrategy from "passport-spotify"
+import { sampleRoute } from "./src/routes/sampleRoute"
+import { SampleUseCase } from "./src/usecases/sampleUseCase"
 
 const app: express.Application = express()
 

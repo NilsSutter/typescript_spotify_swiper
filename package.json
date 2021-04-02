@@ -2,26 +2,33 @@
   "name": "spotify_swipes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node ./dist/server.js",
     "tsc": "tsc",
     "build": "tsc --project ./"
   },
   "author": "Nils Sutter",
   "license": "ISC",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11",
     "@types/express-session": "^1.17.3",
+    "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.35",
     "@types/passport": "^1.0.6",
     "@types/passport-spotify": "^1.1.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.7",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.1",
     "passport-spotify": "^2.0.0",
     "typescript": "^4.2.3"
   },
   "devDependencies": {
+    "nodemon": "^2.0.7",
     "tslint": "^6.1.3"
   }
 }

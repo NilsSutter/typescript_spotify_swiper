@@ -1,20 +1,20 @@
 import express from "express"
-import { sampleRoute } from "./api/routes/sampleRoute"
-import { Failure, Success, Base } from "./api/usecases/base"
+import cookieParser from "cookie-parser"
+// import session from "express-session"
+// import passport from "passport"
+// import SpotifyStrategy from "passport-spotify"
+import { sampleRoute } from "./src/routes/sampleRoute"
+import { SampleUseCase } from "./src/usecases/sampleUseCase"
 
 const app: express.Application = express()
 
 // register middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+// app.use(session) => deprecated
 
 // Dependencies
-class SampleUseCase extends Base {
-  perform(): Success | Failure {
-    return this.failure("Sample error")
-  }
-}
-
 const sampleUseCase = new SampleUseCase
 
 // v0 routes

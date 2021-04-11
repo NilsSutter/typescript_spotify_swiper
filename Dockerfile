@@ -4,11 +4,12 @@ FROM node:12
 WORKDIR /app
 
 # Install app dependencies
-COPY . .
+COPY package.json .
 RUN npm install
 
 # Build dist
-RUN npm run build
+COPY . /app
+RUN npm run tsc
 
 EXPOSE 8080
 CMD npm run start

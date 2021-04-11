@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/app
       - /app/node_modules
+      - /app/dist
     links:
       - db
   db:

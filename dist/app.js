@@ -4,20 +4,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const express_session_1 = __importDefault(require("express-session"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-// import session from "express-session"
-// import passport from "passport"
-// import SpotifyStrategy from "passport-spotify"
-const sampleRoute_1 = require("./src/routes/sampleRoute");
-const sampleUseCase_1 = require("./src/usecases/sampleUseCase");
+const passport_1 = __importDefault(require("passport"));
+const authenticationRouter_1 = require("./src/routes/users/authenticationRouter");
+const users_1 = require("./src/models/db/users/users");
+const initializeSpotifyStrategy_1 = require("./src/lib/middleware/initializeSpotifyStrategy");
+const playlistsRouter_1 = require("./src/routes/users/playlistsRouter");
 const app = express_1.default();
+passport_1.default.serializeUser((user, done) => {
+    done(null, user._id);
+});
+passport_1.default.deserializeUser(async (_id, done) => {
+    const user = await users_1.User.findOne({ _id });
+    done(null, user);
+});
 // register middleware
+passport_1.default.use(initializeSpotifyStrategy_1.initializeSpotifyStrategy());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
+// sessions needs to be setup with a redis or mongoDB store for production
+app.use(express_session_1.default({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(cookie_parser_1.default());
-// app.use(session) => deprecated
-// Dependencies
-const sampleUseCase = new sampleUseCase_1.SampleUseCase;
-// v0 routes
-app.get("/v0/sample", sampleRoute_1.sampleRoute(sampleUseCase));
+app.use(passport_1.default.initialize());
+app.use(passport_1.default.session());
+// routes
+app.get("/v0", (_req, res) => {
+    res.redirect('/auth/spotify');
+});
+app.use("", authenticationRouter_1.authenticationRouter);
+app.use("/v0", playlistsRouter_1.playlistsRouter);
 exports.default = app;

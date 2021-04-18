@@ -1,3 +1,5 @@
+import { UseCaseResult } from "../lib/types/useCaseResult"
+
 export class Success {
   value: any
 
@@ -15,7 +17,7 @@ export class Failure {
 }
 
 export abstract class Base {
-  abstract perform(...args: any[]): Success | Failure
+  abstract perform(...args: any[]): UseCaseResult
 
   success(value: any): Success  {
     return new Success(value)
